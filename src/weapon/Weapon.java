@@ -34,7 +34,4 @@ public class Weapon {
 	public void setMoney(int money) {
 		this.money = money;
 	}
-	
-	
-
 }

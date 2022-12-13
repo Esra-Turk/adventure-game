@@ -1,24 +1,35 @@
 package player;
+import characters.Character;
 import characters.*;
-import java.util.*;;
+import inventory.*;
 
 public class Player {
 	public String name;
 	public Inventory inventory;
+	public Character character;
 	
-	public void selectChar() {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Which do you want to be character?\nPlease enter the name \n1-Samurai\n2-Archer\n3-Knight: ");
-		name = scan.next();
-		
+	private double wallet = 50;
+	
+	public double getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(double wallet) {
+		this.wallet = wallet;
+	}
+
+	public void selectChar(String name) {		
 		if(name == "Samurai") {
+			Samurai s = new Samurai(1, 5, 21, 15);
 		}
 		
 		if(name == "Knight") {
+			Knight k = new Knight(3, 8, 24, 5);
 			
 		}
 		
 		if(name == "Archer") {
+			Archer a = new Archer(2, 7, 18, 20);
 			
 		}
 	}

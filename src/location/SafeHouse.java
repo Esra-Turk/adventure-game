@@ -1,6 +1,6 @@
 package location;
 
-import player.Player;
+import player.*;
 
 public class SafeHouse extends NormalLocation{
 
@@ -11,6 +11,10 @@ public class SafeHouse extends NormalLocation{
 	@Override
 	public boolean onLocation() {
 		return true;
+	}
+	
+	public int updateHealty() {
+		return 2;
 	}
 	
 
