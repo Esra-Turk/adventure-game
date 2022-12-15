@@ -2,8 +2,8 @@ package weapon;
 
 public class Gun extends Weapon{
 
-	public Gun(int id, int damage, int money) {
-		super(id, damage, money);
+	public Gun() {
+		super(1, 2, 25);
 	}
 
 }

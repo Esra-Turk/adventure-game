@@ -1,37 +1,52 @@
 package player;
-import characters.Character;
-import characters.*;
 import inventory.*;
 
 public class Player {
+	protected int id;
+	protected int damage;
+	protected int health;
+	private double money;
+	private String charName;
 	public String name;
 	public Inventory inventory;
-	public Character character;
 	
-	private double wallet = 50;
+	public Player() {
+	}
 	
-	public double getWallet() {
-		return wallet;
+	public Player(String name) {
+		this.name = name;
 	}
 
-	public void setWallet(double wallet) {
-		this.wallet = wallet;
+	public int getId() {
+		return id;
 	}
 
-	public void selectChar(String name) {		
-		if(name == "Samurai") {
-			Samurai s = new Samurai(1, 5, 21, 15);
-		}
-		
-		if(name == "Knight") {
-			Knight k = new Knight(3, 8, 24, 5);
-			
-		}
-		
-		if(name == "Archer") {
-			Archer a = new Archer(2, 7, 18, 20);
-			
-		}
+	public void setId(int id) {
+		this.id = id;
 	}
-	
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
 }

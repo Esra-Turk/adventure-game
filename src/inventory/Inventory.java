@@ -7,8 +7,6 @@ public class Inventory {
 	private String armorName;
 	private  int weaponDamage;
 	private int armorDefence;
-	private int countWeapon ;
-	private int countArmor;
 	
 	public boolean isWater() {
 		return water;
@@ -45,17 +43,5 @@ public class Inventory {
 	}
 	public void setArmorDefence(int armorDefence) {
 		this.armorDefence = armorDefence;
-	}
-	public int getCountWeapon() {
-		return countWeapon;
-	}
-	public void setCountWeapon(int countWeapon) {
-		this.countWeapon = countWeapon;
-	}
-	public int getCountArmor() {
-		return countArmor;
-	}
-	public void setCountArmor(int countArmor) {
-		this.countArmor = countArmor;
 	}
 }
