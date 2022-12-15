@@ -1,5 +1,4 @@
 package characters;
-import player.*;
 
 public class Character{
 	private int id;
