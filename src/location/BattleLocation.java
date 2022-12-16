@@ -1,11 +1,9 @@
 package location;
-import player.*;
 import obstacle.*;
 
 public abstract class BattleLocation extends Location{
 	public Obstacle obstacle;
 	
-
 	public BattleLocation(Obstacle o) {
 		super();
 		this.obstacle = o;
@@ -13,7 +11,7 @@ public abstract class BattleLocation extends Location{
 	
 	@Override
 	public boolean onLocation() {
-		return false;
+		return true;
 	}
 	
 	public void combat() {

@@ -3,7 +3,7 @@ import player.*;
 
 public abstract class Location {
 	public Player player;
-	public String name; 
+	public String name;
 	
 	public Location() {}
 	
@@ -11,6 +11,6 @@ public abstract class Location {
 		this.player = player;
 		this.name = name;
 	}
-		
+	
 	abstract boolean onLocation();
 }

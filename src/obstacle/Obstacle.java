@@ -5,12 +5,20 @@ public class Obstacle {
 	private int damage;
 	private int healty;
 	private double money;
+	public int number; //it will be random number
 	
 	public Obstacle(int id, int damage,int healty,double money) {
 		this.id = id;
 		this.damage = damage;
 		this.healty = healty;
 		this.money = money;
+	}
+	
+	// generate random number, between 1 and 3
+	public int obstacleNumber() {
+		number = ((int)Math.floor(Math.random()*3 + 1));
+		return number;
+		
 	}
 
 	public int getId() {
@@ -44,5 +52,4 @@ public class Obstacle {
 	public void setMoney(double money) {
 		this.money = money;
 	}
-	
 }

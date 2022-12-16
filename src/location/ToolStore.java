@@ -10,12 +10,12 @@ public class ToolStore extends NormalLocation {
 	public String type;
 	public Scanner input;
 	
-	Gun gun = new Gun(1,2,25);
-	Sword sword = new Sword(2,3,35);
-	Rifle rifle = new Rifle(3,7,45);
-	Light light = new Light(1,1,15);
-	Medium medium = new Medium(2,3,25);
-	Heavy heavy = new Heavy(3,5,40);
+	Gun gun = new Gun();
+	Sword sword = new Sword();
+	Rifle rifle = new Rifle();
+	Light light = new Light();
+	Medium medium = new Medium();
+	Heavy heavy = new Heavy();
 
 	public ToolStore(Player player, String name) {
 		super(player, name);
