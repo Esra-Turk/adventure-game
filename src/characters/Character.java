@@ -1,6 +1,6 @@
 package characters;
 
-public class Character{
+public abstract class Character{
 	private int id;
 	private int damage;
 	private int health;

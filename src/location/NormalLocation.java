@@ -13,5 +13,4 @@ public abstract class NormalLocation extends Location {
 		return false;
 		
 	}
-
 }

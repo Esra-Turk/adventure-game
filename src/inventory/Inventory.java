@@ -5,6 +5,7 @@ public class Inventory {
 	private  boolean food;
 	private boolean freewoord;
 	private String armorName;
+	private String waeponName;
 	private  int weaponDamage;
 	private int armorDefence;
 	
@@ -43,5 +44,11 @@ public class Inventory {
 	}
 	public void setArmorDefence(int armorDefence) {
 		this.armorDefence = armorDefence;
+	}
+	public String getWaeponName() {
+		return waeponName;
+	}
+	public void setWaeponName(String waeponName) {
+		this.waeponName = waeponName;
 	}
 }
