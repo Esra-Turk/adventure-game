@@ -103,9 +103,11 @@ public class Game {
 			
 			if(locName.equals("Tool Store")) {
 				location = new ToolStore(player,name);
+				location.onLocation();
 			} 
 			else if (locName.equals("Safe House")) {
 				location = new SafeHouse(player,name);
+				location.onLocation();
 			} 
 			else if (locName.equals("exit")) {
 				System.out.println("You are leaving the game.. See you soon");
@@ -114,6 +116,7 @@ public class Game {
 			else {
 				System.out.println("Wrong location but you still are in the safe house");
 			}
+			System.out.println();
 		}
 	}
 }
