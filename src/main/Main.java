@@ -6,5 +6,6 @@ public class Main {
 		Game g = new Game();
 		g.start();
 		g.selectChar();
+		g.selectLocation();
 	}
 }

@@ -9,6 +9,7 @@ public class Player {
 	private int health;
 	public Inventory inventory;
 	public Character character;
+	public int id;
 	
 	public Player(String name) {
 		this.setName(name);
@@ -44,5 +45,9 @@ public class Player {
 
 	public void setHealth(int health) {
 		this.health = health;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
