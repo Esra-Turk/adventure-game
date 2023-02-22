@@ -26,7 +26,7 @@ public class Game {
 	private void printChar() {
 		System.out.println("_________________________________________________________________\n"
 				+ "|\tWhich character you want to be? \t\t\t" + " " + "|\n"
-				+ "|\t1-Samuria\tDamage:5\tHealth:21\tmoney:15 |\n"
+				+ "|\t1-Samurai\tDamage:5\tHealth:21\tmoney:25 |\n"
 				+ "|\t2-Archer\tDamage:7\tHealth:18\tmoney:20 |\n"
 				+ "|\t3-Knight\tDamage:3\tHealth:8\tmoney:24 |\n"
 				+ "|________________________________________________________________|");
@@ -34,9 +34,9 @@ public class Game {
 	
 	private void printLocation() {
 		System.out.println("________________________________________________________\n"
-				+ "|\tWhere dou you want to go? \t\t\t|\n"
-				+ "|\t1-Tool Store\tYou can buy weapon and armor\t|\n"
-				+ "|\t2-Safe House\tYour health will be restore.\t|\n"
+				+ "|\tWhere dou you want to go? \t\t\t\t\t\t\n"
+				+ "|\t1-Tool Store\tYou can buy weapon and armor\t|\t\n"
+				+ "|\t2-Safe House\tYour health will be restore.\t|\t\n"
 				+ "|_______________________________________________________|");
 	}
 	
@@ -52,11 +52,11 @@ public class Game {
 				player.setId(s.getId());
 				player.setDamage(s.getDamage());
 				player.setHealth(s.getHealth());
-				player.setWallet(s.getMoney());
+				player.setMoney(s.getMoney());
 				System.out.println("You are Samurai anymore. You have "
-							+ player.getDamage() + " damage " 
-							+ player.getHealth() + " health " 
-							+ player.getWallet()+ " money");
+							+ player.getDamage() + " damage "
+							+ player.getHealth() + " health "
+							+ player.getMoney()+ " money");
 				break;
 			}
 			
@@ -65,11 +65,11 @@ public class Game {
 				player.setId(k.getId());
 				player.setDamage(k.getDamage());
 				player.setHealth(k.getHealth());
-				player.setWallet(k.getMoney());
+				player.setMoney(k.getMoney());
 				System.out.println("You are Knight anymore. You have "
-						+ player.getDamage() + " damage " 
-						+ player.getHealth() + " health " 
-						+ player.getWallet()+ " money");
+						+ player.getDamage() + " damage "
+						+ player.getHealth() + " health "
+						+ player.getMoney()+ " money");
 				break;
 			}
 			
@@ -78,11 +78,11 @@ public class Game {
 				player.setId(a.getId());
 				player.setDamage(a.getDamage());
 				player.setHealth(a.getHealth());
-				player.setWallet(a.getMoney());
-				System.out.println("You are Archer anymore. You have " 
-						+ player.getDamage() + " damage " 
-						+ player.getHealth() + " health " 
-						+ player.getWallet()+ " money");
+				player.setMoney(a.getMoney());
+				System.out.println("You are Archer anymore. You have "
+						+ player.getDamage() + " damage "
+						+ player.getHealth() + " health "
+						+ player.getMoney()+ " money");
 				break;
 			}
 			
@@ -90,7 +90,6 @@ public class Game {
 				System.out.print("You entered the invalid character.Please try again:");
 			}	
 		}
-	
 	}
 	
 	public void selectLocation() {
@@ -103,20 +102,25 @@ public class Game {
 			
 			if(locName.equals("Tool Store")) {
 				location = new ToolStore(player,name);
-				location.onLocation();
 			} 
 			else if (locName.equals("Safe House")) {
 				location = new SafeHouse(player,name);
-				location.onLocation();
 			} 
 			else if (locName.equals("exit")) {
 				System.out.println("You are leaving the game.. See you soon");
 				System.exit(0);
 			} 
 			else {
+				location = new SafeHouse(player,name);
 				System.out.println("Wrong location but you still are in the safe house");
 			}
+			location.onLocation();
 			System.out.println();
+
+			if(!location.onLocation()) {
+				System.out.println("GAME OVER");
+				break;
+			}
 		}
 	}
 }

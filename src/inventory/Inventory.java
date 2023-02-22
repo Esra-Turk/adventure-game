@@ -3,12 +3,19 @@ package inventory;
 public class Inventory {
 	private boolean water;
 	private  boolean food;
-	private boolean freewoord;
+	private boolean freewood;
 	private String armorName;
-	private String waeponName;
+	private String weaponName;
 	private  int weaponDamage;
 	private int armorDefence;
-	
+
+	public Inventory() {
+		this.armorName = "none";
+		this.weaponName = "punch" ;
+		this.weaponDamage = 0 ;
+		this.armorDefence = 0;
+	}
+
 	public boolean isWater() {
 		return water;
 	}
@@ -21,11 +28,11 @@ public class Inventory {
 	public void setFood(boolean food) {
 		this.food = food;
 	}
-	public boolean isFreewoord() {
-		return freewoord;
+	public boolean isFreewood() {
+		return freewood;
 	}
-	public void setFreewoord(boolean freewoord) {
-		this.freewoord = freewoord;
+	public void setFreewood(boolean freewood) {
+		this.freewood = freewood;
 	}
 	public String getArmorName() {
 		return armorName;
@@ -45,10 +52,10 @@ public class Inventory {
 	public void setArmorDefence(int armorDefence) {
 		this.armorDefence = armorDefence;
 	}
-	public String getWaeponName() {
-		return waeponName;
+	public String getWeaponName() {
+		return weaponName;
 	}
-	public void setWaeponName(String waeponName) {
-		this.waeponName = waeponName;
+	public void setWeaponName(String weaponName) {
+		this.weaponName = weaponName;
 	}
 }

@@ -4,11 +4,13 @@ public class Weapon {
 	private int id;
 	private int damage;
 	private int money;
+	private String name;
 	
-	public Weapon(int id, int damage, int money) {
+	public Weapon(int id, int damage, int money,String name) {
 		this.id = id;
 		this.damage = damage;
 		this.money = money;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -33,5 +35,13 @@ public class Weapon {
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

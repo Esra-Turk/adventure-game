@@ -4,11 +4,11 @@ import characters.Character;
 
 public class Player {
 	private String name;
-	private double wallet;
+	private double money;
 	private int damage;
 	private int health;
-	public Inventory inventory;
-	public Character character;
+	private Inventory inventory = new Inventory();
+	private Character character;
 	public int id;
 	
 	public Player(String name) {
@@ -23,12 +23,12 @@ public class Player {
 		this.name = name;
 	}
 	
-	public double getWallet() {
-		return wallet;
+	public double getMoney() {
+		return money;
 	}
 
-	public void setWallet(double wallet) {
-		this.wallet = wallet;
+	public void setMoney(double money) {
+		this.money = money;
 	}
 
 	public int getDamage() {
@@ -47,7 +47,21 @@ public class Player {
 		this.health = health;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int id) { this.id = id; }
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+	public Character getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(Character character) {
+		this.character = character;
 	}
 }
