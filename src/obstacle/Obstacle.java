@@ -1,24 +1,31 @@
 package obstacle;
+import java.util.Random;
 
 public class Obstacle {
+	private String name;
 	private int id;
 	private int damage;
-	private int healty;
+	private int health;
 	private double money;
-	public int number; //it will be random number
-	
-	public Obstacle(int id, int damage,int healty,double money) {
+
+
+	public Obstacle(String name, int id, int damage, int health, double money) {
+		this.name = name;
 		this.id = id;
 		this.damage = damage;
-		this.healty = healty;
+		this.health = health;
 		this.money = money;
+
 	}
-	
+
 	// generate random number, between 1 and 3
-	public int obstacleNumber() {
-		number = ((int)Math.floor(Math.random()*3 + 1));
-		return number;
-		
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getId() {
@@ -38,11 +45,11 @@ public class Obstacle {
 	}
 
 	public int getHealty() {
-		return healty;
+		return health;
 	}
 
-	public void setHealty(int healty) {
-		this.healty = healty;
+	public void setHealth(int health) {
+		this.health = health;
 	}
 
 	public double getMoney() {

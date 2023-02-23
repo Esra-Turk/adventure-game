@@ -1,4 +1,5 @@
 package game;
+import location.place.*;
 import player.*;
 import location.*;
 import java.util.*;
@@ -37,6 +38,9 @@ public class Game {
 				+ "|\tWhere dou you want to go? \t\t\t\t\t\t\n"
 				+ "|\t1-Tool Store\tYou can buy weapon and armor\t|\t\n"
 				+ "|\t2-Safe House\tYour health will be restore.\t|\t\n"
+				+ "|\t3-Cave\t\tGo to the cave but be careful! Zombies are everywhere\n"
+				+ "|\t4-River\t\tGo to the river but be careful! Bears are everywhere\n"
+				+ "|\t5-Forest\t\tGo to the forest but be careful!Vampires are everywhere\n"
 				+ "|_______________________________________________________|");
 	}
 	
@@ -105,23 +109,27 @@ public class Game {
 			} 
 			else if (locName.equals("Safe House")) {
 				location = new SafeHouse(player,name);
-			} 
-			else if (locName.equals("exit")) {
+			} else if (locName.equals("Cave")) {
+				location = new Cave(player);
+			}
+			else if (locName.equals("River")) {
+				location = new River(player);
+
+			} else if (locName.equals("Forest")) {
+				location = new Forest(player);
+
+			} else if (locName.equals("exit")) {
 				System.out.println("You are leaving the game.. See you soon");
 				System.exit(0);
-			} 
-			else {
+			}  else {
 				location = new SafeHouse(player,name);
 				System.out.println("Wrong location but you still are in the safe house");
 			}
 			location.onLocation();
 			System.out.println();
 
-			if(!location.onLocation()) {
-				System.out.println("GAME OVER");
-				break;
 			}
 		}
 	}
-}
+
 
