@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class BattleLocation extends Location{
+	private Player player;
 	private String name;
 	private Obstacle obstacle;
 	private String prize;
@@ -13,7 +14,9 @@ public abstract class BattleLocation extends Location{
 	private String selectState;
 	private Random r;
 	private Scanner scan;
+
 	public BattleLocation(Player player,String name,Obstacle obstacle,String prize, int maxObstacle) {
+		this.player = player;
 		this.name = name;
 		this.obstacle = obstacle;
 		this.prize =prize;
@@ -35,6 +38,7 @@ public abstract class BattleLocation extends Location{
 		System.out.println("-------------------------------");
 		System.out.print("You have two choices: Fight or Flight: ");
 		selectState =scan.nextLine().toLowerCase();
+		System.out.println();
 
 		switch (selectState) {
 			case "fight":
@@ -51,7 +55,50 @@ public abstract class BattleLocation extends Location{
 
 	
 	public void fight() {
-		
+		System.out.println("----Health Status Of The Characters----");
+		System.out.println(this.player.getName() + " --> " + this.player.getHealth() + "\n"
+				+ this.obstacle.getName() + " --> " + this.obstacle.getHealth()
+				+ "\n----------------------------------------");
+
+		while(this.player.getHealth() > 0 && this.getObstacle().getHealth() > 0) {
+			hit();
+
+		}
+	}
+
+	public void hit() {
+		//player hits to obstacle
+		if(this.player.getHealth() > 0) {
+			this.obstacle.setHealth(this.obstacle.getHealth()- this.player.getDamage());
+			System.out.println(this.player.getName()
+					+ " dealt " + this.player.getDamage()
+					+ " damage to " + this.obstacle.getName()
+					+ "\nNew Health Status\n" + this.player.getName() + "--> " + this.player.getHealth()
+					+ "\n" + this.obstacle.getName() + "--> " + this.obstacle.getHealth());
+			System.out.println("----------------------------------------");
+		}
+
+		//obstacle hits to player
+		if(this.obstacle.getHealth() > 0) {
+			this.player.setHealth(this.player.getHealth() - this.obstacle.getDamage());
+			System.out.println(this.obstacle.getName()
+					+ " dealt " + this.obstacle.getDamage()
+					+ " damage to " +this.player.getName()
+					+ "\nNew Health Status\n" + this.player.getName() + "--> " + this.player.getHealth()
+					+ "\n" + this.obstacle.getName() + "--> " + this.obstacle.getHealth());
+			System.out.println("----------------------------------------");
+		}
+
+		 if(this.obstacle.getHealth() <= 0) {
+			System.out.println(this.obstacle.getName() + " is dead..Your health: " + this.player.getHealth());
+			System.out.println();
+		}
+		else if(this.player.getHealth() <= 0) {
+			System.out.println("You are dead.."
+					+ this.obstacle.getName() + "'s health: " + this.obstacle.getHealth()
+					+ " Your health: " + this.player.getHealth());
+			System.out.println();
+		}
 	}
 
 

@@ -49,11 +49,11 @@ public class ToolStore extends NormalLocation {
 		if(this.player.getMoney() >= weapon.getMoney()) {
 			this.player.getInventory().setWeaponDamage(weapon.getDamage());
 			this.player.getInventory().setWeaponName(weapon.getName());
-			System.out.println(weapon.getName());
+			this.player.setDamage(this.player.getDamage() + weapon.getDamage());
 			this.player.setMoney(this.player.getMoney() - weapon.getMoney());
 			System.out.println("You bought the product. Your current money are " + this.player.getMoney());
 			System.out.println("Your armor is " + this.player.getInventory().getWeaponName() +
-					" has " + this.player.getInventory().getWeaponDamage() + " damage");
+					" You have " + this.player.getDamage() + " damage anymore");
 		}
 		else {
 			System.out.println("You dont have enough money");

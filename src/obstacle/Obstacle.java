@@ -44,7 +44,7 @@ public class Obstacle {
 		this.damage = damage;
 	}
 
-	public int getHealty() {
+	public int getHealth() {
 		return health;
 	}
 
