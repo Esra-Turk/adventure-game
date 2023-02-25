@@ -5,31 +5,29 @@ import player.*;
 public class SafeHouse extends NormalLocation{
 	public SafeHouse(Player player, String name) {
 		super(player, name);
-		System.out.println("You are in the safe house. Your healthy is updated");
-
 	}
 	
 	@Override
 	public boolean onLocation() {
+		System.out.println("You are in the safe house. Your healthy is updated");
+		updateHealth();
 		return true;
 	}
 	
-	public int updateHealty() {
+	public void updateHealth() {
 		try {
-			if(player.getCharacter().getId() == 1) {
-				player.getCharacter().setHealth(21);
+			if(this.player.getId() == 1) {
+				this.player.setHealth(21);
 			}
-			else if(player.getCharacter().getId() == 2) {
-				player.getCharacter().setHealth(18);
+			else if(this.player.getId() == 2) {
+				this.player.setHealth(18);
 			}
-			else if(player.getCharacter().getId() == 3) {
-				player.getCharacter().setHealth(24);
+			else if(this.player.getId() == 3) {
+				this.player.setHealth(24);
 			}
-			return player.getCharacter().getHealth();
 		   
 		} catch (Exception e) {
 		      System.out.println("Something went wrong.Invalid character");
-		      return 0;
 		  }		
 	}
 }

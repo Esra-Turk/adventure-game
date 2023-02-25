@@ -47,6 +47,10 @@ public class Player {
 		this.health = health;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public void setId(int id) { this.id = id; }
 
 	public Inventory getInventory() {

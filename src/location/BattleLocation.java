@@ -94,6 +94,7 @@ public abstract class BattleLocation extends Location{
 			System.out.println();
 		}
 		else if(this.player.getHealth() <= 0) {
+			this.player.setHealth(0);
 			System.out.println("You are dead.."
 					+ this.obstacle.getName() + "'s health: " + this.obstacle.getHealth()
 					+ " Your health: " + this.player.getHealth());
