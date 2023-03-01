@@ -41,6 +41,7 @@ public class Game {
 				+ "|\t3-Cave\t\tGo to the cave but be careful! Zombies are everywhere\n"
 				+ "|\t4-River\t\tGo to the river but be careful! Bears are everywhere\n"
 				+ "|\t5-Forest\t\tGo to the forest but be careful!Vampires are everywhere\n"
+				+ "|\t4-Mine\t\tGo to the mine but be careful! Snakes are everywhere\n"
 				+ "|_______________________________________________________|");
 	}
 	
@@ -135,9 +136,14 @@ public class Game {
 					System.out.println("You can't go back the forest because you've won a prize before");
 				}
 
+			} else if(locName.equals("Mine")){
+				location = new Mine(player);
+				location.onLocation();
+
 			} else if (locName.equals("exit")) {
 				System.out.println("You are leaving the game.. See you soon");
 				System.exit(0);
+
 			}  else {
 				location = new SafeHouse(player,name);
 				location.onLocation();

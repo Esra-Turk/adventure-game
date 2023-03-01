@@ -81,6 +81,8 @@ public abstract class BattleLocation extends Location{
 				this.player.getInventory().setFood(true);
 				System.out.println("You earned food for killing the " + this.obstacle.getName());
 				break;
+			case "Snake":
+				System.out.println("You earned " + " blabla " + this.obstacle.getName());
 		}
 	}
 
