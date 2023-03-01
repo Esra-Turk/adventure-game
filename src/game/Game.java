@@ -106,26 +106,44 @@ public class Game {
 			
 			if(locName.equals("Tool Store")) {
 				location = new ToolStore(player,name);
-			} 
-			else if (locName.equals("Safe House")) {
+				location.onLocation();
+			} else if (locName.equals("Safe House")) {
 				location = new SafeHouse(player,name);
+				location.onLocation();
+
 			} else if (locName.equals("Cave")) {
-				location = new Cave(player);
-			}
-			else if (locName.equals("River")) {
-				location = new River(player);
+				if (!this.player.getInventory().isFood()) {
+					location = new Cave(player);
+					location.onLocation();
+				} else {
+					System.out.println("You can't go back the cave because you've won a prize before");
+				}
+
+			} else if (locName.equals("River")) {
+				if (!this.player.getInventory().isWater()) {
+					location = new River(player);
+					location.onLocation();
+				} else {
+					System.out.println("You can't go back the river because you've won a prize before");
+				}
 
 			} else if (locName.equals("Forest")) {
-				location = new Forest(player);
+				if (!this.player.getInventory().isFirewood()) {
+					location = new Forest(player);
+					location.onLocation();
+				} else {
+					System.out.println("You can't go back the forest because you've won a prize before");
+				}
 
 			} else if (locName.equals("exit")) {
 				System.out.println("You are leaving the game.. See you soon");
 				System.exit(0);
 			}  else {
 				location = new SafeHouse(player,name);
+				location.onLocation();
 				System.out.println("Wrong location but you still are in the safe house");
 			}
-			location.onLocation();
+
 			System.out.println();
 
 			}

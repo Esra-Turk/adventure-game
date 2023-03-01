@@ -1,5 +1,4 @@
 package location;
-import inventory.Inventory;
 import obstacle.*;
 import player.Player;
 import java.util.Random;
@@ -47,7 +46,13 @@ public abstract class BattleLocation extends Location{
 				System.out.println("wrong state");
 				break;
 		}
+
+		if(this.player.getInventory().isWater() && this.player.getInventory().isFood() && this.player.getInventory().isFirewood()){
+			System.out.println("You win the game");
+			System.exit(0);
+		}
 		return true;
+
 	}
 
 	public int randomObstacle() {
@@ -89,8 +94,9 @@ public abstract class BattleLocation extends Location{
 
 	public void fight() {
 		System.out.println("----Health Status Of The Characters----");
+		this.obstacle.setHealth(this.obstacle.getHealth() * this.getObstacleNumber());
 		System.out.println(this.player.getName() + " --> " + this.player.getHealth() + "\n"
-				+ this.obstacle.getName() + "(s)--> " + this.obstacle.getHealth() * this.getObstacleNumber()
+				+ this.obstacle.getName() + "(s)--> " + this.obstacle.getHealth()
 				+ "\n----------------------------------------");
 
 		while(this.player.getHealth() > 0 && this.getObstacle().getHealth() > 0) {
