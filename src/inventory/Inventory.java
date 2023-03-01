@@ -3,7 +3,7 @@ package inventory;
 public class Inventory {
 	private boolean water;
 	private  boolean food;
-	private boolean freewood;
+	private boolean firewood;
 	private String armorName;
 	private String weaponName;
 	private  int weaponDamage;
@@ -28,11 +28,11 @@ public class Inventory {
 	public void setFood(boolean food) {
 		this.food = food;
 	}
-	public boolean isFreewood() {
-		return freewood;
+	public boolean isFirewood() {
+		return firewood;
 	}
-	public void setFreewood(boolean freewood) {
-		this.freewood = freewood;
+	public void setFirewood(boolean firewood) {
+		this.firewood = firewood;
 	}
 	public String getArmorName() {
 		return armorName;

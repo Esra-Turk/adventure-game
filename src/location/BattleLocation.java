@@ -1,4 +1,5 @@
 package location;
+import inventory.Inventory;
 import obstacle.*;
 import player.Player;
 import java.util.Random;
@@ -24,15 +25,6 @@ public abstract class BattleLocation extends Location{
 		this.scan = new Scanner(System.in);
 	}
 
-	public int randomObstacle() {
-		r = new Random();
-		return obstacleNumber  = r.nextInt(this.getMaxObstacle()) + 1;
-	}
-
-	public void setObstacleDamage() {
-		this.obstacle.setDamage(this.obstacle.getDamage() -this.player.getInventory().getArmorDefence());
-	}
-	
 	@Override
 	public boolean onLocation() {
 		System.out.println("You are in " + this.getName());
@@ -54,11 +46,47 @@ public abstract class BattleLocation extends Location{
 			default:
 				System.out.println("wrong state");
 				break;
-			}
+		}
 		return true;
 	}
 
-	
+	public int randomObstacle() {
+		r = new Random();
+		return obstacleNumber  = r.nextInt(this.getMaxObstacle()) + 1;
+	}
+
+	public void setObstacleDamage() {
+		this.obstacle.setDamage(this.obstacle.getDamage() -this.player.getInventory().getArmorDefence());
+	}
+
+	//get prize inventory bear -> water | vampire -> firewood | zombie -> food
+	public void getInventoryPrize() {
+		String obstacleName = this.obstacle.getName();
+
+		switch(obstacleName) {
+			case "Bear":
+				this.player.getInventory().setWater(true);
+				System.out.println("You earned water for killing the " + this.obstacle.getName());
+				break;
+			case "Vampire":
+				this.player.getInventory().setFirewood(true);
+				System.out.println("You earned food for killing the " + this.obstacle.getName());
+				break;
+			case "Zombie":
+				this.player.getInventory().setFood(true);
+				System.out.println("You earned food for killing the " + this.obstacle.getName());
+				break;
+		}
+	}
+
+	//get obstacle money
+	public void getObstacleMoney() {
+		System.out.println("Your old balance is " + this.player.getMoney());
+		System.out.println("The obstacle(s) had " + this.obstacle.getMoney() * this.getObstacleNumber());
+		this.player.setMoney(this.player.getMoney() + this.obstacle.getMoney() * this.getObstacleNumber());
+		System.out.println("Your new balance is " + this.player.getMoney());
+	}
+
 	public void fight() {
 		System.out.println("----Health Status Of The Characters----");
 		System.out.println(this.player.getName() + " --> " + this.player.getHealth() + "\n"
@@ -98,11 +126,8 @@ public abstract class BattleLocation extends Location{
 			System.out.println(this.obstacle.getName() + " is dead..Your health: " + this.player.getHealth());
 			System.out.println();
 
-			//get obstacle money
-			System.out.println("Your old balance is " + this.player.getMoney());
-			System.out.println("The obstacle(s) had " + this.obstacle.getMoney() * this.getObstacleNumber());
-			this.player.setMoney(this.player.getMoney() + this.obstacle.getMoney() * this.getObstacleNumber());
-			System.out.println("Your new balance is " + this.player.getMoney());
+			getObstacleMoney();
+			getInventoryPrize();
 
 		}
 		else if(this.player.getHealth() <= 0) {
