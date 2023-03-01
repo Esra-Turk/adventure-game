@@ -44,6 +44,9 @@ public class Player {
 	}
 
 	public void setHealth(int health) {
+		if(health < 0 ){
+			health = 0;
+		}
 		this.health = health;
 	}
 
@@ -51,7 +54,9 @@ public class Player {
 		return id;
 	}
 
-	public void setId(int id) { this.id = id; }
+	public void setId(int id){
+		this.id = id;
+	}
 
 	public Inventory getInventory() {
 		return inventory;

@@ -57,12 +57,11 @@ public abstract class BattleLocation extends Location{
 	public void fight() {
 		System.out.println("----Health Status Of The Characters----");
 		System.out.println(this.player.getName() + " --> " + this.player.getHealth() + "\n"
-				+ this.obstacle.getName() + " --> " + this.obstacle.getHealth()
+				+ this.obstacle.getName() + "(s)--> " + this.obstacle.getHealth() * this.getObstacleNumber()
 				+ "\n----------------------------------------");
 
 		while(this.player.getHealth() > 0 && this.getObstacle().getHealth() > 0) {
 			hit();
-
 		}
 	}
 
@@ -89,12 +88,12 @@ public abstract class BattleLocation extends Location{
 			System.out.println("----------------------------------------");
 		}
 
+		//print winner after the fight
 		 if(this.obstacle.getHealth() <= 0) {
 			System.out.println(this.obstacle.getName() + " is dead..Your health: " + this.player.getHealth());
 			System.out.println();
 		}
 		else if(this.player.getHealth() <= 0) {
-			this.player.setHealth(0);
 			System.out.println("You are dead.."
 					+ this.obstacle.getName() + "'s health: " + this.obstacle.getHealth()
 					+ " Your health: " + this.player.getHealth());
