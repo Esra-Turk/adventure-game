@@ -105,26 +105,33 @@ public abstract class BattleLocation extends Location{
 	}
 
 	public void hit() {
-		//player hits to obstacle
-		if(this.player.getHealth() > 0) {
-			this.obstacle.setHealth(this.obstacle.getHealth()- this.player.getDamage());
-			System.out.println(this.player.getName()
-					+ " dealt " + this.player.getDamage()
-					+ " damage to " + this.obstacle.getName()
-					+ "\nNew Health Status\n" + this.player.getName() + "--> " + this.player.getHealth()
-					+ "\n" + this.obstacle.getName() + "--> " + this.obstacle.getHealth());
-			System.out.println("----------------------------------------");
+		int chance = (int) (Math.random() * 10);
+		//System.out.println(chance);
+
+		if(chance <= 5 ) {
+			//player hits to obstacle
+			if(this.player.getHealth() > 0) {
+				this.obstacle.setHealth(this.obstacle.getHealth()- this.player.getDamage());
+				System.out.println(this.player.getName()
+						+ " dealt " + this.player.getDamage()
+						+ " damage to " + this.obstacle.getName()
+						+ "\nNew Health Status\n" + this.player.getName() + "--> " + this.player.getHealth()
+						+ "\n" + this.obstacle.getName() + "--> " + this.obstacle.getHealth());
+				System.out.println("----------------------------------------");
+			}
 		}
 
-		//obstacle hits to player
-		if(this.obstacle.getHealth() > 0) {
-			this.player.setHealth(this.player.getHealth() - this.obstacle.getDamage());
-			System.out.println(this.obstacle.getName()
-					+ " dealt " + this.obstacle.getDamage()
-					+ " damage to " +this.player.getName()
-					+ "\nNew Health Status\n" + this.player.getName() + "--> " + this.player.getHealth()
-					+ "\n" + this.obstacle.getName() + "--> " + this.obstacle.getHealth());
-			System.out.println("----------------------------------------");
+		if(chance > 5) {
+			//obstacle hits to player
+			if(this.obstacle.getHealth() > 0) {
+				this.player.setHealth(this.player.getHealth() - this.obstacle.getDamage());
+				System.out.println(this.obstacle.getName()
+						+ " dealt " + this.obstacle.getDamage()
+						+ " damage to " +this.player.getName()
+						+ "\nNew Health Status\n" + this.player.getName() + "--> " + this.player.getHealth()
+						+ "\n" + this.obstacle.getName() + "--> " + this.obstacle.getHealth());
+				System.out.println("----------------------------------------");
+			}
 		}
 
 		//print winner after the fight
