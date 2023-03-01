@@ -18,8 +18,6 @@ public class Obstacle {
 
 	}
 
-	// generate random number, between 1 and 3
-
 	public String getName() {
 		return name;
 	}

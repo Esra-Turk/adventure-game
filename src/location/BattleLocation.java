@@ -28,6 +28,10 @@ public abstract class BattleLocation extends Location{
 		r = new Random();
 		return obstacleNumber  = r.nextInt(this.getMaxObstacle()) + 1;
 	}
+
+	public void setObstacleDamage() {
+		this.obstacle.setDamage(this.obstacle.getDamage() -this.player.getInventory().getArmorDefence());
+	}
 	
 	@Override
 	public boolean onLocation() {
@@ -39,6 +43,7 @@ public abstract class BattleLocation extends Location{
 		System.out.print("You have two choices: Fight or Flight: ");
 		selectState =scan.nextLine().toLowerCase();
 		System.out.println();
+		setObstacleDamage();
 
 		switch (selectState) {
 			case "fight":
