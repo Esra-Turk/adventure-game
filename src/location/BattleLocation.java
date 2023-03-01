@@ -92,6 +92,13 @@ public abstract class BattleLocation extends Location{
 		 if(this.obstacle.getHealth() <= 0) {
 			System.out.println(this.obstacle.getName() + " is dead..Your health: " + this.player.getHealth());
 			System.out.println();
+
+			//get obstacle money
+			System.out.println("Your old balance is " + this.player.getMoney());
+			System.out.println("The obstacle(s) had " + this.obstacle.getMoney() * this.getObstacleNumber());
+			this.player.setMoney(this.player.getMoney() + this.obstacle.getMoney() * this.getObstacleNumber());
+			System.out.println("Your new balance is " + this.player.getMoney());
+
 		}
 		else if(this.player.getHealth() <= 0) {
 			System.out.println("You are dead.."

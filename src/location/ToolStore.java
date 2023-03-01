@@ -52,7 +52,7 @@ public class ToolStore extends NormalLocation {
 			this.player.setDamage(this.player.getDamage() + weapon.getDamage());
 			this.player.setMoney(this.player.getMoney() - weapon.getMoney());
 			System.out.println("You bought the product. Your current money are " + this.player.getMoney());
-			System.out.println("Your armor is " + this.player.getInventory().getWeaponName() +
+			System.out.println("Your weapon is " + this.player.getInventory().getWeaponName() +
 					" You have " + this.player.getDamage() + " damage anymore");
 		}
 		else {
