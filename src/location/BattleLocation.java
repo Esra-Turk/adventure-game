@@ -48,7 +48,7 @@ public abstract class BattleLocation extends Location{
 		}
 
 		if(this.player.getInventory().isWater() && this.player.getInventory().isFood() && this.player.getInventory().isFirewood()){
-			System.out.println("You win the game");
+			System.out.println("YOU WON THE GAME!!See you again");
 			System.exit(0);
 		}
 		return true;
@@ -64,25 +64,73 @@ public abstract class BattleLocation extends Location{
 		this.obstacle.setDamage(this.obstacle.getDamage() -this.player.getInventory().getArmorDefence());
 	}
 
+	public void getSnakePrize(){
+		int num = r.nextInt(100);
+
+		if(num < 3){
+			this.player.getInventory().setWeaponName("Rifle");
+			this.player.setDamage(this.player.getDamage() + 7);
+			System.out.println("You earned rifle.Your new damage is " + this.player.getDamage());
+		}
+		else if(num < 8){
+			this.player.getInventory().setWeaponName("Sword");
+			this.player.setDamage(this.player.getDamage() + 3);
+			System.out.println("You earned sword.Your new damage is " + this.player.getDamage());
+
+		}
+		else if (num < 15) {
+			this.player.getInventory().setWeaponName("Gun");
+			this.player.setDamage(this.player.getDamage() + 2);
+			System.out.println("You earned gun. Your new damage is" + this.player.getDamage());
+		}
+		else if(num < 18) {
+			this.player.getInventory().setArmorName("Heavy");
+			System.out.println("Your earned heavy armor");
+		}
+		else if(num < 23) {
+			this.player.getInventory().setArmorName("Medium");
+			System.out.println("You earned medium armor");
+		}
+		else if(num < 30) {
+			this.player.getInventory().setArmorName("Light");
+			System.out.println("You earned light armor");
+		}
+		else if(num < 35){
+			this.player.setMoney(this.player.getMoney() + 10);
+			System.out.println("You earned 10 money. Your new balance is " + this.player.getMoney());
+		}
+		else if(num < 42){
+			this.player.setMoney(this.player.getMoney() + 5);
+			System.out.println("You earned 5 money Your new balance is " + this.player.getMoney());
+		}
+		else if(num < 55){
+			this.player.setMoney(this.player.getMoney() + 1);
+			System.out.println("You earned 1 money Your new balance is " + this.player.getMoney());
+		}
+		else{
+			System.out.println("You earned anything");
+		}
+
+	}
+
 	//get prize inventory bear -> water | vampire -> firewood | zombie -> food
 	public void getInventoryPrize() {
 		String obstacleName = this.obstacle.getName();
 
-		switch(obstacleName) {
-			case "Bear":
+		switch (obstacleName) {
+			case "Bear" -> {
 				this.player.getInventory().setWater(true);
 				System.out.println("You earned water for killing the " + this.obstacle.getName());
-				break;
-			case "Vampire":
+			}
+			case "Vampire" -> {
 				this.player.getInventory().setFirewood(true);
 				System.out.println("You earned food for killing the " + this.obstacle.getName());
-				break;
-			case "Zombie":
+			}
+			case "Zombie" -> {
 				this.player.getInventory().setFood(true);
 				System.out.println("You earned food for killing the " + this.obstacle.getName());
-				break;
-			case "Snake":
-				System.out.println("You earned " + " blabla " + this.obstacle.getName());
+			}
+			case "Snake" -> getSnakePrize();
 		}
 	}
 
@@ -149,7 +197,8 @@ public abstract class BattleLocation extends Location{
 			System.out.println("You are dead.."
 					+ this.obstacle.getName() + "'s health: " + this.obstacle.getHealth()
 					+ " Your health: " + this.player.getHealth());
-			System.out.println();
+			System.out.println("GAME OVER!! See you again");
+			System.exit(0);
 		}
 	}
 

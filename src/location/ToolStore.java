@@ -76,42 +76,38 @@ public class ToolStore extends NormalLocation {
 	}
 
 	public void selectProduct () {
-			System.out.print("Which product do you want to buy? Weapon or Armor: ");
-			product = input.next();
-			switch (product) {
-				case "Weapon":
-					menuWeapon();
-					System.out.print("Enter the weapon id that you want to buy:");
-					id = input.nextInt();
-					if(id == 1) {
-						buyWeapon(new Gun());
-					} else if (id == 2) {
-						buyWeapon((new Sword()));
-					}
-					else if(id == 3) {
-						buyWeapon((new Rifle()));
-					}
-					else {
-						System.out.println("Invalid weapon id");
-					}
-					break;
-				case "Armor":
-					menuArmor();
-					System.out.print("Enter the armor id that you want to buy:");
-					id = input.nextInt();
-					if(id == 1) {
-						buyArmor(new Light());
-					} else if (id == 2) {
-						buyArmor((new Medium()));
-					}
-					else if(id == 3) {
-						buyArmor((new Heavy()));
-					}
-					else {
-						System.out.println("Invalid armor id!");
-					}
-					break;
+		System.out.print("Which product do you want to buy? Weapon or Armor: ");
+		product = input.next();
+		switch (product) {
+			case "Weapon" -> {
+				menuWeapon();
+				System.out.print("Enter the weapon id that you want to buy:");
+				id = input.nextInt();
+				if (id == 1) {
+					buyWeapon(new Gun());
+				} else if (id == 2) {
+					buyWeapon((new Sword()));
+				} else if (id == 3) {
+					buyWeapon((new Rifle()));
+				} else {
+					System.out.println("Invalid weapon id");
+				}
 			}
+			case "Armor" -> {
+				menuArmor();
+				System.out.print("Enter the armor id that you want to buy:");
+				id = input.nextInt();
+				if (id == 1) {
+					buyArmor(new Light());
+				} else if (id == 2) {
+					buyArmor((new Medium()));
+				} else if (id == 3) {
+					buyArmor((new Heavy()));
+				} else {
+					System.out.println("Invalid armor id!");
+				}
+			}
+		}
 
 	}
 }

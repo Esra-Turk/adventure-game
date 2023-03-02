@@ -7,7 +7,7 @@ import characters.*;
 import characters.Character;
 
 public class Game {
-	private Scanner input;
+	private final Scanner input;
 	public Location location;
 	public String name;
 	public Player player;
@@ -29,7 +29,7 @@ public class Game {
 				+ "|\tWhich character you want to be? \t\t\t" + " " + "|\n"
 				+ "|\t1-Samurai\tDamage:5\tHealth:21\tmoney:25 |\n"
 				+ "|\t2-Archer\tDamage:7\tHealth:18\tmoney:20 |\n"
-				+ "|\t3-Knight\tDamage:3\tHealth:8\tmoney:24 |\n"
+				+ "|\t3-Knight\tDamage:8\tHealth:24\tmoney:5 |\n"
 				+ "|________________________________________________________________|");
 	}
 	
@@ -48,52 +48,49 @@ public class Game {
 	
 	public void selectChar() {
 		printChar();
+		label:
 		while (true) {
 			System.out.print("Enter the character name: ");
 			String charName = input.next();
-			
-			if(charName.equals("Samurai")) {
-				Character s = new Samurai();
-				player.setId(s.getId());
-				player.setDamage(s.getDamage());
-				player.setHealth(s.getHealth());
-				player.setMoney(s.getMoney());
-				System.out.println("You are Samurai anymore. You have "
+
+			switch (charName) {
+				case "Samurai":
+					Character s = new Samurai();
+					player.setId(s.getId());
+					player.setDamage(s.getDamage());
+					player.setHealth(s.getHealth());
+					player.setMoney(s.getMoney());
+					System.out.println("You are Samurai anymore. You have "
 							+ player.getDamage() + " damage "
 							+ player.getHealth() + " health "
-							+ player.getMoney()+ " money");
-				break;
+							+ player.getMoney() + " money");
+					break label;
+				case "Knight":
+					Knight k = new Knight();
+					player.setId(k.getId());
+					player.setDamage(k.getDamage());
+					player.setHealth(k.getHealth());
+					player.setMoney(k.getMoney());
+					System.out.println("You are Knight anymore. You have "
+							+ player.getDamage() + " damage "
+							+ player.getHealth() + " health "
+							+ player.getMoney() + " money");
+					break label;
+				case "Archer":
+					Archer a = new Archer();
+					player.setId(a.getId());
+					player.setDamage(a.getDamage());
+					player.setHealth(a.getHealth());
+					player.setMoney(a.getMoney());
+					System.out.println("You are Archer anymore. You have "
+							+ player.getDamage() + " damage "
+							+ player.getHealth() + " health "
+							+ player.getMoney() + " money");
+					break label;
+				default:
+					System.out.print("You entered the invalid character.Please try again:");
+					break;
 			}
-			
-			else if(charName.equals("Knight")) {
-				Knight k = new Knight();
-				player.setId(k.getId());
-				player.setDamage(k.getDamage());
-				player.setHealth(k.getHealth());
-				player.setMoney(k.getMoney());
-				System.out.println("You are Knight anymore. You have "
-						+ player.getDamage() + " damage "
-						+ player.getHealth() + " health "
-						+ player.getMoney()+ " money");
-				break;
-			}
-			
-			else if(charName.equals("Archer")) {
-				Archer a = new Archer();
-				player.setId(a.getId());
-				player.setDamage(a.getDamage());
-				player.setHealth(a.getHealth());
-				player.setMoney(a.getMoney());
-				System.out.println("You are Archer anymore. You have "
-						+ player.getDamage() + " damage "
-						+ player.getHealth() + " health "
-						+ player.getMoney()+ " money");
-				break;
-			}
-			
-			else {
-				System.out.print("You entered the invalid character.Please try again:");
-			}	
 		}
 	}
 	
@@ -104,50 +101,53 @@ public class Game {
 		while(true) {
 			System.out.print("Please enter the location:");
 			locName = input.nextLine();
-			
-			if(locName.equals("Tool Store")) {
-				location = new ToolStore(player,name);
-				location.onLocation();
-			} else if (locName.equals("Safe House")) {
-				location = new SafeHouse(player,name);
-				location.onLocation();
 
-			} else if (locName.equals("Cave")) {
-				if (!this.player.getInventory().isFood()) {
-					location = new Cave(player);
+			switch (locName) {
+				case "Tool Store" -> {
+					location = new ToolStore(player, name);
 					location.onLocation();
-				} else {
-					System.out.println("You can't go back the cave because you've won a prize before");
 				}
-
-			} else if (locName.equals("River")) {
-				if (!this.player.getInventory().isWater()) {
-					location = new River(player);
+				case "Safe House" -> {
+					location = new SafeHouse(player, name);
 					location.onLocation();
-				} else {
-					System.out.println("You can't go back the river because you've won a prize before");
 				}
-
-			} else if (locName.equals("Forest")) {
-				if (!this.player.getInventory().isFirewood()) {
-					location = new Forest(player);
+				case "Cave" -> {
+					if (!this.player.getInventory().isFood()) {
+						location = new Cave(player);
+						location.onLocation();
+					} else {
+						System.out.println("You can't go back the cave because you've won a prize before");
+					}
+				}
+				case "River" -> {
+					if (!this.player.getInventory().isWater()) {
+						location = new River(player);
+						location.onLocation();
+					} else {
+						System.out.println("You can't go back the river because you've won a prize before");
+					}
+				}
+				case "Forest" -> {
+					if (!this.player.getInventory().isFirewood()) {
+						location = new Forest(player);
+						location.onLocation();
+					} else {
+						System.out.println("You can't go back the forest because you've won a prize before");
+					}
+				}
+				case "Mine" -> {
+					location = new Mine(player);
 					location.onLocation();
-				} else {
-					System.out.println("You can't go back the forest because you've won a prize before");
 				}
-
-			} else if(locName.equals("Mine")){
-				location = new Mine(player);
-				location.onLocation();
-
-			} else if (locName.equals("exit")) {
-				System.out.println("You are leaving the game.. See you soon");
-				System.exit(0);
-
-			}  else {
-				location = new SafeHouse(player,name);
-				location.onLocation();
-				System.out.println("Wrong location but you still are in the safe house");
+				case "exit" -> {
+					System.out.println("You are leaving the game.. See you soon");
+					System.exit(0);
+				}
+				default -> {
+					location = new SafeHouse(player, name);
+					location.onLocation();
+					System.out.println("Wrong location but you still are in the safe house");
+				}
 			}
 
 			System.out.println();
