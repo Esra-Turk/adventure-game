@@ -29,7 +29,7 @@ public class ToolStore extends NormalLocation {
 					"\t Damage: " + weapons.getDamage() +
 					"\t Money: " + weapons.getMoney());
 		}
-		System.out.println("----------------------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------------------");
 	}
 
 	public void menuArmor() {
